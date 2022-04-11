@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.grid {
+    width:50px;
+    height: 50px;
+    border:1px solid rgba(0,0,0,0.4);
+    flex-direction: column;
+    cursor: pointer;
+}
+.grid:hover {
+    transition: all 0.1s linear;
+    border:1px solid #63B8EE;
+    
+}
+
+.red {
+    background-color: #de5246!important;
+    color: #fff!important;
+}
+
+.battleField {
+    padding:20px;
+    /* border:1px solid red; */
+}
+
+.grid_row {
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+
+.filled {
+    background-color: #3b5998!important
+}
+
+
+.filledvs {
+    background-color: #5c1246!important
+}
+
+
+.shipvs {
+    background-color: #5c1246!important
+}
+
+#arrange,#arrangeP2 {
+    display: none;
+}
+
+.ship {
+    background-color: #3b5998;
+    border:1px solid black;
+    display:inline-block;
+    cursor:move;
+}
+
+.v-4 {
+    height: calc(50px * 4 );
+    width: 50px;
+}
+
+.v-3 {
+    height: calc(50px * 3);
+    width: 50px;
+}
+
+.v-2 {
+    height: calc(50px * 2 );
+    width: 50px;
+}
+
+
+.h-4 {
+    width: calc(50px * 4 );
+    height: 50px;
+}
+
+.h-3 {
+    width: calc(50px * 3);
+    height: 50px;
+}
+
+.h-2 {
+    width: calc(50px * 2 );
+    height: 50px;
+}
+
+.s-1,.s-2 {
+    width: 50px;
+    height: 50px;
+}
+
+.ship-line {
+    display: inline-block;
+    border:1px solid rgba(0,0,0,0.12);
+    padding:2px;
+    display: flex;
+    flex-direction: row;
+}
+
+.ship-line div {
+    margin:8px;
+}
+
+#main {
+    position:relative;
+    height: 100vh;
+}
+
+.blocker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    opacity: 0.9;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.fship {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.container{ 
+    display: flex;
+}
+
+.button {
+    font-family: arial;
+    color: #14396A !important;
+    font-size: 14px;
+    text-shadow: 0px 0px 0px #FFFFFF;
+    box-shadow: 1px 1px 0px #BEE2F9;
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: 0px solid #3866A3;
+    cursor: pointer;
+    background: #63B8EE;
+    display: block;
+    margin:8px 0
+  }
+
+  .button:hover {
+      background-color: #3866A3;
+      color: #FFFFFF!important;
+  }
+
+  .button:disabled {
+      background-color: #BEE2F9;
+      color: #fff!important;
+      cursor:not-allowed;
+  }
+
+  .hit {
+      background-color: green;
+  }
+  .miss {
+      background-color: red;
+  }
+
+  .black {
+      background-color: #14396A;
+  }

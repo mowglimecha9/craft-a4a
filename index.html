@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app.css">
+    <title>BattleShip Intuit</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="fship">
+            <button class="button" id="ng" onclick="startGame()">New Game</button>
+
+            <div class="stats">
+                
+            </div>
+
+            <div class="ship-line">
+                 <div class="ship v-4" draggable="true" data-length=4 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                 <div class="ship v-3" draggable="true" data-length=3 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                 <div class="ship v-2" draggable="true" data-length=2 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+            </div>
+             <div class="ship-line">
+                 <div class="ship h-4" draggable="true" data-length=4 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                 <div class="ship h-3" draggable="true" data-length=3 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                 <div class="ship h-2" draggable="true" data-length=2 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+             </div>
+             <div class="ship-line">
+                 <div class="ship s-1" draggable="true" data-length=1 data-orientation="square" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                 <div class="ship s-2" draggable="true" data-length=1 data-orientation="square" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+             </div>
+
+             <button class="button" id="arrange" onclick="doneArrange()">Im Done</button>
+             <button class="button" id="arrangeP2" onclick="doneArrangep2()">Im Done</button>
+
+
+
+
+     
+         </div>
+         <div id="main">
+            <div class="blocker">
+                <h5 id="feedback-loop"></h5>
+                <button class="button red" id="turn" onclick="turn()">Finish Turn</button>
+            </div>
+         </div>
+         <div id="feedback" >
+             <h4>Logs</h4>
+            
+         </div>
+    </div>
+
+    <script src="/app.js"></script>
+
+</body>
+</html>
