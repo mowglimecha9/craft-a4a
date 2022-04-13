@@ -8,3 +8,4 @@ app.get('/', function (req, res) {
 app.use(express.static('public'));
 
 app.listen(3000)
+console.log("Can view the project at http://localhost:3000")

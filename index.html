@@ -16,21 +16,22 @@
             <div class="stats">
                 
             </div>
-
-            <div class="ship-line">
-                 <div class="ship v-4" draggable="true" data-length=4 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-                 <div class="ship v-3" draggable="true" data-length=3 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-                 <div class="ship v-2" draggable="true" data-length=2 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+            <div id="sc">
+                <div class="ship-line">
+                    <div class="ship v-4" draggable="true" data-length=4 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                    <div class="ship v-3" draggable="true" data-length=3 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                    <div class="ship v-2" draggable="true" data-length=2 data-orientation="vertical" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                </div>
+                <div class="ship-line sl-h">
+                    <div class="ship h-4" draggable="true" data-length=4 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                    <div class="ship h-3" draggable="true" data-length=3 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                    <div class="ship h-2" draggable="true" data-length=2 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                </div>
+                <div class="ship-line">
+                    <div class="ship s-1" draggable="true" data-length=1 data-orientation="square" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                    <div class="ship s-2" draggable="true" data-length=1 data-orientation="square" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+                </div>
             </div>
-             <div class="ship-line">
-                 <div class="ship h-4" draggable="true" data-length=4 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-                 <div class="ship h-3" draggable="true" data-length=3 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-                 <div class="ship h-2" draggable="true" data-length=2 data-orientation="horizontal" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-             </div>
-             <div class="ship-line">
-                 <div class="ship s-1" draggable="true" data-length=1 data-orientation="square" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-                 <div class="ship s-2" draggable="true" data-length=1 data-orientation="square" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-             </div>
 
              <button class="button" id="arrange" onclick="doneArrange()">Im Done</button>
              <button class="button" id="arrangeP2" onclick="doneArrangep2()">Im Done</button>

@@ -1,6 +1,6 @@
 const GRID_WIDTH = 10;
 const GRID_HEIGHT = 10;
-const MAX_TRIES = 30;
+const MAX_TRIES = 10;
 const VER = "vertical";
 const HOR = "horizontal";
 const SQUARE = "square"
@@ -10,6 +10,7 @@ let feedback = document.querySelectorAll("#feedback")[0];
 let blocker = document.querySelectorAll(".blocker")[0];
 let stats = document.querySelectorAll(".stats")[0];
 let feedbackLoop = document.querySelectorAll("#feedback-loop")[0];
+let sc = document.querySelectorAll("#sc")[0];
 
 
 
@@ -111,8 +112,8 @@ function generate_grids() {
                                 x:a,
                                 y:gridPosition.y - index
                             }
-                            playersBoard[`player${currentPlayer}`][VER][`v${currentShipDrag.length}`].push(newGp) 
-                            playersBoard[`player${currentPlayer}`]['occupied'].push(`g-${newGp.x}-${newGp.y}`)
+                                playersBoard[`player${currentPlayer}`][VER][`v${currentShipDrag.length}`].push(newGp) 
+                                playersBoard[`player${currentPlayer}`]['occupied'].push(`g-${newGp.x}-${newGp.y}`)
                         }
                     }
                     if(currentShipDrag.orientation == HOR) {
@@ -167,6 +168,10 @@ function hitGrid(gp) {
     if(playersBoard.player1.triesCount === MAX_TRIES  && playersBoard.player2.triesCount === MAX_TRIES){
         playersBoard.player1.correctHits > playersBoard.player2.correctHits ? alert("Player 1 Wins") : alert("Player 2 Wins")
         let winner =   playersBoard.player1.correctHits > playersBoard.player2.correctHits ? 1 : 2;
+        let loser =   playersBoard.player1.correctHits > playersBoard.player2.correctHits ? 2 : 1;
+        currentPlayer = loser
+        repaintGrid()
+        playersBoard.player1.correctHits == playersBoard.player2.correctHits ? alert("Its a draw") : ''
         return false
     } 
     let opponent = currentPlayer === 1 ? 2 : 1;
@@ -249,25 +254,61 @@ function grid_creator() {
 // to work
 function collision(shipLength,orientation,gridPos) {
     if(orientation == VER) {
-      console.log(playersBoard[`player${currentPlayer}`]['occupied'])
+        for (let index = 0; index < currentShipDrag.length; index++) {
+            let newGp = {
+                x:gridPos.x,
+                y:gridPos.y - index
+            }  
+            if( playersBoard[`player${currentPlayer}`]['occupied'].includes(`g-${newGp.x}-${newGp.y}`)){
+                alert("Ship collision detected please arrange somewhere else")
+                return false;
+            }
+        }
+        return true;
+    }
+    if(orientation == HOR) {
+        for (let index = 0; index < currentShipDrag.length; index++) {
+            let newGp = {
+                x:gridPos.x- index  ,
+                y:gridPos.y 
+            }  
+            if( playersBoard[`player${currentPlayer}`]['occupied'].includes(`g-${newGp.x}-${newGp.y}`)){
+                alert("Ship collision detected please arrange somewhere else")
+                return false;
+            }
+        }
+        return true;
+    }
+    if(orientation == SQUARE) {
+        for (let index = 0; index < currentShipDrag.length; index++) {
+            let newGp = {
+                x:gridPos.x,
+                y:gridPos.y 
+            }  
+            if( playersBoard[`player${currentPlayer}`]['occupied'].includes(`g-${newGp.x}-${newGp.y}`)){
+                alert("Ship collision detected please arrange somewhere else")
+                return false;
+            }
+        }
+        return true;
     }
 }
 
 function grid_checker(shipLength,orientation,gridPos) {
     
     if(orientation == VER) {
-        if(gridPos.y - shipLength >= 0) {
+        if(gridPos.y - shipLength >= 0 && collision(shipLength,orientation,gridPos)) {
             return true;
         }
     } 
     if(orientation == HOR) {
-        if(gridPos.x - shipLength >= 0) {
+        if(gridPos.x - shipLength >= 0  && collision(shipLength,orientation,gridPos)) {
             return true;
         }
     } 
 
     
-    if(orientation == SQUARE) {
+    if(orientation == SQUARE && collision(shipLength,orientation,gridPos)) {
         if(gridPos.x - shipLength >= 0 || gridPos.y - shipLength >= 0) {
             return true;
         }
@@ -331,8 +372,9 @@ function feedbackMessage(message) {
 function startGame() {
     let ng = document.querySelectorAll("#ng")[0];
     ng.disabled =true
+    sc.style.display = 'block';
     feedback.append(feedbackMessage("Starting New Game . . ."))
-    feedback.append(feedbackMessage(`<strong>Player ${currentPlayer}, please start arranging ships</strong>`))
+    feedback.append(feedbackMessage(`<strong>Player ${currentPlayer}, please start arranging ships. (Once place, position is final)</strong>`))
    
 
 
@@ -343,7 +385,7 @@ function doneArrange(){
     feedback.append(feedbackMessage(`<strong>Player ${currentPlayer} finished arranging ships</strong>`))
     currentPlayer = 2;
 
-    feedback.append(feedbackMessage(`<strong>Player ${currentPlayer}, please start arranging ships</strong>`))
+    feedback.append(feedbackMessage(`<strong>Player ${currentPlayer}, please start arranging ships. (Once place, position is final)</strong>`))
     resetBoard();
 
     arr.style.display="none"
